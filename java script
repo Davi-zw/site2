@@ -1,0 +1,31 @@
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.onclick = () => {
+    navLinks.style.display =
+        navLinks.style.display === "flex" ? "none" : "flex";
+};
+
+let index = 0;
+const slides = document.getElementsByClassName("slide");
+
+function showSlide(i) {
+    if (i >= slides.length) index = 0;
+    if (i < 0) index = slides.length - 1;
+
+    for (let slide of slides) slide.style.display = "none";
+
+    slides[index].style.display = "block";
+}
+
+document.getElementById("nextBtn").onclick = () => {
+    index++;
+    showSlide(index);
+};
+
+document.getElementById("prevBtn").onclick = () => {
+    index--;
+    showSlide(index);
+};
+
+showSlide(index);
